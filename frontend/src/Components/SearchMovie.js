@@ -40,8 +40,8 @@ function SearchMovie({ data, setData }) {
       <div id="formData">
         <Form onSubmit={onSubmit} >
           <Form.Group className="mb-3 lg-2" >
-            <Form.Label> <h5>Enter Movie</h5></Form.Label>
-            <Form.Control type="text" id="movieInput" onChange={e => setSuggest(e.target.value)} />
+            {/* <Form.Label> <h5>Enter Movie</h5></Form.Label> */}
+            <Form.Control type="text" id="movieInput" placeholder='Enter Movie' onChange={e => setSuggest(e.target.value)} />
           </Form.Group>
           <div>
             {
@@ -52,7 +52,7 @@ function SearchMovie({ data, setData }) {
             }
 
           </div>
-          <Button className='buttons' variant="primary" type="submit">Search</Button>
+          <Button className='buttons' variant="outline-dark" type="submit">Search</Button>
         </Form>
       </div>
       {

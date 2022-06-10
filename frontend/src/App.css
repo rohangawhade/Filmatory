@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body{
     margin: 20px;
 }
 
+h2{
+    font-family: 'Lobster', cursive;
+}
+
 #formData{
+    display: block;
+    margin: auto;
     width: 400px;
     margin-bottom: 20px;
+}
+
+div #movieInput{
+    margin-bottom: 0;
 }
 #movieDiv{
     display: flex;
@@ -16,5 +28,5 @@ body{
 }
 
 .buttons{
-    margin: 20px 0 0 0;
+    margin: 10px 0 0 0;
 }
