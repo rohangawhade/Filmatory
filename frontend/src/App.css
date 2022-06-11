@@ -1,11 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-body{
-    margin: 20px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam&family=Lobster&display=swap');
 
 h2{
     font-family: 'Lobster', cursive;
+    z-index: 1;
 }
 
 #formData{
@@ -13,18 +10,30 @@ h2{
     margin: auto;
     width: 400px;
     margin-bottom: 20px;
+    z-index: 1;
 }
 
 div #movieInput{
+    z-index: 20;
     margin-bottom: 0;
 }
+
 #movieDiv{
     display: flex;
+    margin: auto;
+    width: 80%;
+    font-family: 'Anek Malayalam', sans-serif;
+    font-size: 20px;
+    word-spacing: 2px;
+}
+
+#movieDiv #info{
+    max-height: 100vh;
 }
 
 #movieDiv #poster, #movieDiv #info{
     margin: 20px;
-    word-break: break-all;   
+    word-break: break-word;
 }
 
 .buttons{
