@@ -1,8 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam&family=Lobster&display=swap');
 
-h2{
+:root{
+    --darkBlue1: #072540;
+    --darkBlue2: #183D5D;
+    --lightBlue1: #93C2DB;
+    --white1: #FAFAFA;
+    --brown1: #2787B7;
+}
+body{
+    background-color: var(--brown1);
+    /* background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% / */
+                /* 40px 40px, linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) rgb(54, 54, 69); */
+    ;
+}
+
+/* #headingDiv{
+    margin: 20px 0 15px 0;
+} */
+
+#headingDiv:hover{
+    cursor: pointer;
+}
+
+#headerText{
     font-family: 'Lobster', cursive;
     z-index: 1;
+    color: var(--white1);
+    font-size: 50px;
 }
 
 #formData{
@@ -28,12 +52,13 @@ div #movieInput{
 }
 
 #movieDiv #info{
-    max-height: 100vh;
+    color: var(--white1);
 }
 
 #movieDiv #poster, #movieDiv #info{
     margin: 20px;
     word-break: break-word;
+    max-height: 62vh;
 }
 
 .buttons{
