@@ -1,15 +1,51 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Suggestion from './Suggestion';
 
-function SearchMovie({ data, setData, setGIF }) {
+function SearchMovie({ data, movieData, setData, setGIF, setMovieData1, setMovieData2, setMovieData3, setMovieData4 }) {
 
   const [suggest, setSuggest] = useState();
   const [err, setErr] = useState(false);
 
-  useEffect(() => { }, [suggest])
+  if(err){
+    setMovieData1();
+    setMovieData2();
+    setMovieData3();
+    setMovieData4();
+  }
+
+  async function GetMovieData(movieName) {
+    for(let i=0; i<4; i=i+1){
+      let apiData = await fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}&t=${movieName[i]}`);
+      apiData = await apiData.json();
+      const dict = {}
+      console.log(apiData);
+      dict['Title'] = apiData.Title;
+      dict['Plot'] = apiData.Plot;
+      dict['Poster'] = apiData.Poster;
+      dict['Released'] = apiData.Released;
+      if(i === 0){setMovieData1(dict)}
+      else if(i === 1){setMovieData2(dict)}
+      else if(i === 2){setMovieData3(dict)}
+      else if(i === 3){setMovieData4(dict)}
+    }
+    // let arr = []
+    // movieName.map(async (k, i) => {
+    //   console.log("inside");
+    //   let apiData = await fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}&t=${k}`);
+    //   apiData = await apiData.json();
+    //   const dict = {}
+    //   dict['Title'] = apiData.Title
+    //   dict['Plot'] = apiData.Plot
+    //   dict['Poster'] = apiData.Poster
+    //   dict['Released'] = apiData.Released
+    //   arr.push(dict);
+    // })
+    // console.log(arr);
+    // setMovieData(arr);
+  }
 
   async function getData(movieName) {
     setGIF(false);
@@ -25,16 +61,16 @@ function SearchMovie({ data, setData, setGIF }) {
           body: JSON.stringify(apiData),
           headers: {
             'Content-Type': 'application/json'
-        }
+          }
         });
         let resJson = await res.json();
+        await GetMovieData(resJson.response);
         console.log(`Recommended Movies: ${resJson['response']}`);
       } catch (error) {
         console.log(error);
       }
 
       setErr(false);
-      // setGIF(false);
       document.getElementById("movieInput").value = "";
       setSuggest();
     }
@@ -57,8 +93,7 @@ function SearchMovie({ data, setData, setGIF }) {
       <div id="formData">
         <Form onSubmit={onSubmit} >
           <Form.Group className="mb-3 lg-2" >
-            {/* <Form.Label> <h5>Enter Movie</h5></Form.Label> */}
-            <Form.Control type="text" id="movieInput" placeholder='Enter Movie' onChange={e => {setSuggest(e.target.value)}} />
+            <Form.Control type="text" id="movieInput" placeholder='Enter Movie' onChange={e => { setSuggest(e.target.value) }} />
           </Form.Group>
           <div>
             {
@@ -73,7 +108,7 @@ function SearchMovie({ data, setData, setGIF }) {
         </Form>
       </div>
       {
-        err ? <h4 style={{margin: "auto", display: "table"}}>No such movie found! Try again</h4> : <></>
+        err ? <h4 style={{ margin: "auto", display: "table" }}>No such movie found! Try again</h4> : <></>
       }
 
     </>

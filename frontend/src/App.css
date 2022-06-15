@@ -45,6 +45,7 @@ div #movieInput{
 #movieDiv{
     display: flex;
     margin: auto;
+    margin-bottom: 20px;
     width: 80%;
     font-family: 'Anek Malayalam', sans-serif;
     font-size: 20px;
@@ -63,4 +64,20 @@ div #movieInput{
 
 .buttons{
     margin: 10px 0 0 0;
+}
+
+.card-img-top{
+    object-fit: contain;
+    height: 400px;
+}
+.card{
+    height: 600px;
+}
+.recommend{
+    margin: 10px;
+    width: 500px;
+}
+.dispMovie{
+    display: flex;
+    justify-content: space-evenly;
 }
